@@ -1,69 +1,109 @@
 <!DOCTYPE html>
-<html>
-    <head> 
-        <link href="./css/style.css" rel="stylesheet">
-        <meta charset="UTF-8">
-    <title>SportClub</title></head>
-    <style>
-        .ColorRojo{
-            color: brown
-        }
-        
-        #titulo{
-            color: cadetblue;
-            Front-size:50px;
-        }
-    </style>
-    <body>
-        <h1><header>
-    <h1 class="ColorRojo">SportClub</h1>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportClub</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <h1 class="logo">SportClub</h1>
+
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#planes">Planes</a>
             <a href="#contacto">Contacto</a>
         </nav>
-</header>
+    </header>
 
-<main>
-    <section id="inicio">
+    <main class="container">
+
+        <section id="inicio" class="hero">
             <h2>Entrena con nosotros</h2>
-            <p>Bienvenido a SportClub, un espacio pensado para mejorar tu salud, entrenar con profesionales y participar en diferentes clases deportivas.</p>
-            <a href="#planes"><button>Conocer planes</button></a>
+
+            <p>
+                Bienvenido a SportClub, un espacio pensado para mejorar tu salud,
+                entrenar con profesionales y participar en diferentes clases deportivas.
+            </p>
+
+            <a href="#planes">
+                <button>Conocer planes</button>
+            </a>
         </section>
 
         <section id="planes">
-            <h2>Planes disponibles</h2>
 
-            <article>
-                <h3>Plan Básico</h3>
-                <p>Acceso a clases grupales 2 veces por semana.</p>
-                <p>Precio: $15.000</p>
-            </article>
+            <h2 class="section-title">Planes disponibles</h2>
 
-            <article>
-                <h3>Plan Premium</h3>
-                <p>Acceso ilimitado a clases y uso de instalaciones.</p>
-                <p>Precio: $30.000</p>
-            </article>
+            <div class="cards">
 
-            <article>
-                <h3>Plan Familiar</h3>
-                <p>Plan para grupos familiares con beneficios especiales.</p>
-                <p>Precio: $50.000</p>
-            </article>
+                <article class="card">
+                    <h3>Plan Básico</h3>
+
+                    <p>
+                        Acceso a clases grupales 2 veces por semana.
+                    </p>
+
+                    <p class="precio">$15.000</p>
+
+                    <button>Elegir plan</button>
+                </article>
+
+                <article class="card">
+                    <h3>Plan Premium</h3>
+
+                    <p>
+                        Acceso ilimitado a clases y uso de instalaciones.
+                    </p>
+
+                    <p class="precio">$30.000</p>
+
+                    <button>Elegir plan</button>
+                </article>
+
+                <article class="card">
+                    <h3>Plan Familiar</h3>
+
+                    <p>
+                        Plan para grupos familiares con beneficios especiales.
+                    </p>
+
+                    <p class="precio">$50.000</p>
+
+                    <button>Elegir plan</button>
+                </article>
+
+            </div>
+
         </section>
 
-        <section id="contacto">
-            <h2>Contacto</h2>
-            <p>Correo: contacto@sportclub.cl</p>
-            <p>Teléfono: +56 9 1234 5678</p>
-            <p>Dirección: Av. Principal 123, Santiago</p>
-        </section>
-</main>
+        <section id="contacto" class="contacto">
 
-<footer>
-    <p>© 2025 SportClub</p>
-</footer>
-    </body>
+            <h2 class="section-title">Contacto</h2>
+
+            <div class="contact-card">
+
+                <p><strong>Correo:</strong> contacto@sportclub.cl</p>
+
+                <p><strong>Teléfono:</strong> +56 9 1234 5678</p>
+
+                <p><strong>Dirección:</strong> Av. Principal 123, Santiago</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2025 SportClub</p>
+    </footer>
+
+</body>
 
 </html>
