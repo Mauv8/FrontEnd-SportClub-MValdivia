@@ -1,8 +1,315 @@
 <!DOCTYPE html>
 <html>
-    <head>Sport Club</head>
+    <head> <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportClub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 20px 0;
+            border-bottom: 3px solid #e74c3c;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            color: #e74c3c;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+        }
+
+        .planes {
+            padding: 60px 0;
+            background: #f9f9f9;
+        }
+
+        .planes h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #111;
+        }
+
+        .grid-planes {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 28px;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+
+        .card .desc {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .card .precio {
+            font-size: 32px;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 25px;
+        }
+
+        .card .precio span {
+            font-size: 14px;
+            font-weight: normal;
+            color: #888;
+        }
+
+        .card button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            width: 100%;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #c0392b;
+        }
+
+        .popular {
+            border: 2px solid #e74c3c;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .contacto {
+            padding: 60px 0;
+        }
+
+        .contacto h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .contacto-info {
+            background: #f1f1f1;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .contacto-info p {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .contacto-info i {
+            margin-right: 10px;
+            color: #e74c3c;
+        }
+
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style></head>
     <body>
-        <h1>Entrena con Nosotros</h1>
+        <h1><header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <h1>SportClub</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#planes">Planes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section id="inicio" class="hero">
+        <h2>Entrena con nosotros</h2>
+        <p>Bienvenido a SportClub, un espacio pensado para mejorar tu salud, entrenar con profesionales y participar en diferentes clases deportivas.</p>
+        <a href="#planes" class="btn">Conocer planes</a>
+    </section>
+
+    <section id="planes" class="planes">
+        <div class="container">
+            <h2>Planes disponibles</h2>
+            <div class="grid-planes">
+                <div class="card">
+                    <h3>Plan Básico</h3>
+                    <p class="desc">Acceso a clases grupales 2 veces por semana.</p>
+                    <p class="precio">$15.000 <span>/ mes</span></p>
+                    <button onclick="alert('Elegiste el Plan Básico')">Elegir plan</button>
+                </div>
+
+                <div class="card popular">
+                    <div class="badge">MÁS ELEGIDO</div>
+                    <h3>Plan Premium</h3>
+                    <p class="desc">Acceso ilimitado a clases y uso de instalaciones.</p>
+                    <p class="precio">$30.000 <span>/ mes</span></p>
+                    <button onclick="alert('Elegiste el Plan Premium')">Elegir plan</button>
+                </div>
+
+                <div class="card">
+                    <h3>Plan Familiar</h3>
+                    <p class="desc">Plan para grupos familiares con beneficios especiales.</p>
+                    <p class="precio">$50.000 <span>/ mes</span></p>
+                    <button onclick="alert('Elegiste el Plan Familiar')">Elegir plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2>Contacto</h2>
+            <div class="contacto-info">
+                <p>📧 contacto@sportclub.cl</p>
+                <p>📞 +56 9 1234 5678</p>
+                <p>📍 Av. Principal 123, Santiago</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 SportClub - Todos los derechos reservados</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(enlace => {
+        enlace.addEventListener('click', function(e) {
+            const destino = document.querySelector(this.getAttribute('href'));
+            if(destino) {
+                e.preventDefault();
+                destino.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script></h1>
         <h2></h2>
     </body>
 
