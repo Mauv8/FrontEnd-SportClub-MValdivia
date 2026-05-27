@@ -7,17 +7,190 @@
     <title>SportClub</title>
 
     <link rel="stylesheet" href="./css/style.css">
+    <!-- Estilos para el login fullscreen con fondo de gimnasio -->
+<style>
+    /* Pantalla completa que se superpone */
+    .login-fullscreen {
+        display: none;               /* Oculto por defecto */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2000;              /* Por encima de todo */
+        background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    
+    /* Capa oscura semitransparente para mejorar legibilidad */
+    .login-fullscreen::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(3px);
+    }
+    
+    /* Contenedor del formulario (centrado vertical/horizontal) */
+    .login-container {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 1rem;
+    }
+    
+    /* Tarjeta blanca del formulario */
+    .login-card {
+        background: white;
+        max-width: 420px;
+        width: 100%;
+        padding: 2.5rem;
+        border-radius: 32px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        animation: fadeInUp 0.4s ease;
+    }
+    
+    .login-card h3 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #111827;
+    }
+    
+    .login-card p.sub {
+        color: #6b7280;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+    }
+    
+    .login-card input {
+        width: 100%;
+        padding: 14px 18px;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 24px;
+        font-size: 1rem;
+        transition: 0.2s;
+    }
+    
+    .login-card input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+    
+    .login-card button {
+        width: 100%;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        border: none;
+        padding: 14px;
+        border-radius: 40px;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .login-card button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+    
+    /* Botón de cierre (X) */
+    .close-login-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+        z-index: 20;
+    }
+    
+    .close-login-btn:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(1.05);
+    }
+    
+    /* Animación de entrada */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Utilidades para mostrar/ocultar elementos del navbar */
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .user-name {
+        font-weight: 600;
+        color: #2563eb;
+    }
+    
+    .logout-btn {
+        background: rgba(37, 99, 235, 0.1);
+        color: #2563eb;
+        box-shadow: none;
+        padding: 6px 16px;
+    }
+    
+    .logout-btn:hover {
+        background: rgba(37, 99, 235, 0.2);
+        transform: none;
+    }
+    
+    .hide {
+        display: none !important;
+    }
+</style>
 </head>
 
 <body>
 
     <header class="navbar">
-        <h1 class="logo">SportClub</h1>
+        <h1 class="logo"><img src="./img/logo_empresa_letra_v1.png" alt="SportClub Logo" style="height: 45px; vertical-align: middle; margin-right: 10px;"></h1>
 
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#planes">Planes</a>
             <a href="#contacto">Contacto</a>
+            <!-- BOTÓN DE LOGIN (siempre visible al inicio) -->
+    <button id="loginBtn" class="btn-login">Iniciar sesión</button>
+    
+    <!-- ZONA QUE SE MUESTRA CUANDO EL USUARIO ESTÁ LOGUEADO -->
+    <div id="userInfo" class="user-info hide">
+        <span class="user-name" id="userNameDisplay"></span>
+        <button id="logoutBtn" class="btn-login logout-btn">Cerrar sesión</button>
+    </div>
         </nav>
     </header>
 
@@ -103,7 +276,109 @@
     <footer>
         <p>© 2025 SportClub</p>
     </footer>
+<!-- Modal de login a pantalla completa con fondo de gimnasio -->
+<div id="loginFullscreen" class="login-fullscreen">
+    <button class="close-login-btn" id="closeFullscreenBtn">&times;</button>
+    <div class="login-container">
+        <div class="login-card">
+            <h3>Bienvenido</h3>
+            <h4 class="logo"><img src="./img/logo_empresa_letra_v1.png" alt="SportClub Logo" style="height: 45px; vertical-align: middle; margin-right: 10px;"></h4>
 
+            <p class="sub">Accede a tu cuenta</p>
+            <form id="loginFormFull">
+                <input type="text" id="fullUsername" placeholder="Usuario o correo" required autocomplete="off">
+                <input type="password" id="fullPassword" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+                <p style="font-size: 12px; margin-top: 1rem; color: #6b7280;">
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    // 1. Obtener referencias a los elementos del DOM
+    const loginBtn = document.getElementById('loginBtn');
+    const loginFullscreen = document.getElementById('loginFullscreen');
+    const closeFullscreenBtn = document.getElementById('closeFullscreenBtn');
+    const loginFormFull = document.getElementById('loginFormFull');
+    const userInfoDiv = document.getElementById('userInfo');
+    const userNameSpan = document.getElementById('userNameDisplay');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    // 2. Función para abrir el modal (mostrar pantalla completa)
+    loginBtn.addEventListener('click', () => {
+        loginFullscreen.style.display = 'block';
+    });
+
+    // 3. Cerrar modal con el botón X
+    closeFullscreenBtn.addEventListener('click', () => {
+        loginFullscreen.style.display = 'none';
+    });
+
+    // 4. Cerrar modal si se hace clic fuera del formulario (en el fondo oscuro)
+    loginFullscreen.addEventListener('click', (e) => {
+        if (e.target === loginFullscreen) {
+            loginFullscreen.style.display = 'none';
+        }
+    });
+
+    // 5. Manejar el envío del formulario de login
+    loginFormFull.addEventListener('submit', (e) => {
+        e.preventDefault();  // Evita que recargue la página
+        
+        const username = document.getElementById('fullUsername').value.trim();
+        const password = document.getElementById('fullPassword').value.trim();
+
+        if (username === "" || password === "") {
+            alert("Por favor completa ambos campos");
+            return;
+        }
+
+        // --- SIMULACIÓN DE AUTENTICACIÓN ---
+        // Guardamos en localStorage que el usuario ha iniciado sesión
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userName', username);
+        
+        // Actualizar la interfaz principal (mostrar nombre y botón cerrar sesión)
+        updateUILoggedIn(username);
+        
+        // Cerrar el modal
+        loginFullscreen.style.display = 'none';
+        
+        // Limpiar el formulario para la próxima vez
+        loginFormFull.reset();
+    });
+
+    // 6. Cerrar sesión
+    logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userName');
+        updateUILoggedOut();
+    });
+
+    // 7. Funciones para cambiar la interfaz según estado de sesión
+    function updateUILoggedIn(username) {
+        loginBtn.classList.add('hide');          // ocultar botón "Iniciar sesión"
+        userInfoDiv.classList.remove('hide');    // mostrar área de usuario
+        userNameSpan.textContent = username;     // poner el nombre
+    }
+
+    function updateUILoggedOut() {
+        loginBtn.classList.remove('hide');       // mostrar botón "Iniciar sesión"
+        userInfoDiv.classList.add('hide');       // ocultar área de usuario
+        userNameSpan.textContent = '';           // limpiar nombre
+    }
+
+    // 8. Al cargar la página, verificar si ya había una sesión activa
+    function checkSession() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        const userName = localStorage.getItem('userName');
+        if (isLoggedIn === 'true' && userName) {
+            updateUILoggedIn(userName);
+        }
+    }
+    checkSession();
+</script>
 </body>
 
 </html>
