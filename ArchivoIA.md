@@ -1,4 +1,12 @@
-1° use de IA(ChatGPt):
+1° use de IA(ChatGPt): Tengo este HTML (codigo inicial). Necesito que
+lo estilices con CSS para que sea moderno,
+limpio y profesional.
+Debe tener:
+- Colores claros
+- Botones modernos
+- Inputs estilizados
+- Centrado de contenido
+
 
 2°uso de IA(ChatGPT):
 necesito que al momento de darle al boton de login, en donde solo existe el boton de login, se abra una vista nueva en donde colocar el usuario y contraseña profesional y elegante.
