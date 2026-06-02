@@ -4,227 +4,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>SportClub | Gimnasio Premium</title>
+    <title>SportClub | Tu mejor versión comienza hoy</title>
     
-    <!-- Fuentes modernas -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Hoja de Estilo Principal -->
+    <link rel="stylesheet" href="./css/style.css">
     
-=======
-    <title>SportClub</title>
-<!-- Bootstrap CSS (iconos y JS al final) -->
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Bootstrap CSS (iconos y JS al final) -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Tu CSS personalizado (sobrescribe a Bootstrap) -->
->>>>>>> 6560f95fff66ba8cef3bff1aa994336c93e9808f
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
+    <!-- ========================================
+         HEADER Y NAVBAR
+         ======================================== -->
     <header class="navbar">
-        <h1 class="logo"><img src="./img/logo_empresa_letra_v1.png" alt="SportClub Logo" style="height: 45px; vertical-align: middle; margin-right: 10px;"></h1>
+        <a href="#inicio" class="logo-container">
+            <img src="./css/img/logo_empresa_letra_v1.png" alt="SportClub Logo" class="logo-img">
+        </a>
 
         <nav>
-            <a href="#inicio">Inicio</a>
+            <a href="#inicio" class="active">Inicio</a>
+            <a href="#beneficios">Beneficios</a>
             <a href="#planes">Planes</a>
+            <a href="#sobre-el-club">Sobre el Club</a>
             <a href="#contacto">Contacto</a>
-            <!-- BOTÓN DE LOGIN (siempre visible al inicio) -->
-    <button id="loginBtn" class="btn-login">Iniciar sesión</button>
-    
-    <!-- ZONA QUE SE MUESTRA CUANDO EL USUARIO ESTÁ LOGUEADO -->
-    <div id="userInfo" class="user-info hide">
-        <span class="user-name" id="userNameDisplay"></span>
-        <button id="logoutBtn" class="btn-login logout-btn">Cerrar sesión</button>
-    </div>
+            <a href="./pages/login.html" class="btn-login">Login</a>
         </nav>
     </header>
 
-    <main class="container">
+    <main>
 
+        <!-- ========================================
+             HERO SECTION
+             ======================================== -->
         <section id="inicio" class="hero">
-            <h2>Entrena con nosotros</h2>
-
+            <span class="hero-tag">Tecnología & Acondicionamiento</span>
+            <h2>SportClub <br><span class="text-gradient-gold">Tu mejor versión comienza hoy.</span></h2>
+            
             <p>
-                Bienvenido a SportClub, un espacio pensado para mejorar tu salud,
-                entrenar con profesionales y participar en diferentes clases deportivas.
+                Promover el bienestar físico y mental mediante entrenamientos deportivos y tecnología aplicada al seguimiento de usuarios. Alcanza tu máximo potencial de manera inteligente.
             </p>
 
-            <a href="#planes">
-                <button>Conocer planes</button>
-            </a>
+            <div class="hero-buttons">
+                <a href="#planes" class="btn-primary">
+                    Comienza Hoy <i data-lucide="arrow-right"></i>
+                </a>
+                <a href="#sobre-el-club" class="btn-secondary">Saber más</a>
+            </div>
         </section>
 
-        <section id="planes">
-
-            <h2 class="section-title">Planes disponibles</h2>
-
-            <div class="cards">
-
-                <article class="card">
-                    <h3>Plan Básico</h3>
-
-                    <p>
-                        Acceso a clases grupales 2 veces por semana.
-                    </p>
-
-                    <p class="precio">$15.000</p>
-
-                    <button>Elegir plan</button>
-                </article>
-
-                <article class="card">
-                    <h3>Plan Premium</h3>
-
-                    <p>
-                        Acceso ilimitado a clases y uso de instalaciones.
-                    </p>
-
-                    <p class="precio">$30.000</p>
-
-                    <button>Elegir plan</button>
-                </article>
-
-                <article class="card">
-                    <h3>Plan Familiar</h3>
-
-                    <p>
-                        Plan para grupos familiares con beneficios especiales.
-                    </p>
-
-                    <p class="precio">$50.000</p>
-
-                    <button>Elegir plan</button>
-                </article>
-
+        <!-- ========================================
+             SECCIÓN BENEFICIOS
+             ======================================== -->
+        <section id="beneficios" class="container">
+            <div class="section-title-wrapper">
+                <span class="section-subtitle">¿Por qué elegirnos?</span>
+                <h2 class="section-title">Nuestros Beneficios</h2>
             </div>
 
+            <div class="benefits-grid">
+                <!-- Beneficio 1 -->
+                <article class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="cpu"></i>
+                    </div>
+                    <h3>Tecnología Deportiva</h3>
+                    <p>
+                        Digitalizamos tu progreso con sistemas de seguimiento inteligentes y dashboards adaptados para registrar cada meta alcanzada.
+                    </p>
+                </article>
+
+                <!-- Beneficio 2 -->
+                <article class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="award"></i>
+                    </div>
+                    <h3>Coaches Certificados</h3>
+                    <p>
+                        Contamos con un equipo de entrenadores expertos listos para planificar, asesorar y motivarte en cada una de tus sesiones.
+                    </p>
+                </article>
+
+                <!-- Beneficio 3 -->
+                <article class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="calendar"></i>
+                    </div>
+                    <h3>Flexibilidad Completa</h3>
+                    <p>
+                        Diseña tu propia semana reservando clases de crossfit, yoga y funcional en los horarios que mejor se adapten a tu estilo de vida.
+                    </p>
+                </article>
+            </div>
         </section>
 
-        <section id="contacto" class="contacto">
-
-            <h2 class="section-title">Contacto</h2>
-
-            <div class="contact-card">
-
-                <p><strong>Correo:</strong> contacto@sportclub.cl</p>
-
-                <p><strong>Teléfono:</strong> +56 9 1234 5678</p>
-
-                <p><strong>Dirección:</strong> Av. Principal 123, Santiago</p>
-
+        <!-- ========================================
+             SECCIÓN PLANES
+             ======================================== -->
+        <section id="planes" class="container">
+            <div class="section-title-wrapper">
+                <span class="section-subtitle">Membresías</span>
+                <h2 class="section-title">Planes Disponibles</h2>
             </div>
 
+            <div class="planes-grid">
+                <!-- Plan Básico -->
+                <article class="plan-card">
+                    <div class="plan-header">
+                        <h3>Plan Básico</h3>
+                        <p class="plan-desc">Perfecto para iniciar tu camino físico.</p>
+                        <div class="plan-price">
+                            <span class="monto">$15.000</span>
+                            <span class="periodo">/ mes</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check-circle-2"></i> Clases grupales 2 veces/semana</li>
+                        <li><i data-lucide="check-circle-2"></i> Acceso a sala de musculación</li>
+                        <li><i data-lucide="check-circle-2"></i> Perfil digital básico</li>
+                        <li class="disabled"><i data-lucide="x-circle"></i> Evaluación con Coach personal</li>
+                        <li class="disabled"><i data-lucide="x-circle"></i> Acceso ilimitado a instalaciones</li>
+                    </ul>
+                    <a href="./pages/login.html" class="btn-plan">Elegir Plan</a>
+                </article>
+
+                <!-- Plan Premium (Destacado) -->
+                <article class="plan-card popular">
+                    <div class="plan-header">
+                        <h3>Plan Premium</h3>
+                        <p class="plan-desc">El balance ideal entre entrenamiento y tecnología.</p>
+                        <div class="plan-price">
+                            <span class="monto">$30.000</span>
+                            <span class="periodo">/ mes</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check-circle-2"></i> Acceso ilimitado a clases y salas</li>
+                        <li><i data-lucide="check-circle-2"></i> Dashboard personal completo</li>
+                        <li><i data-lucide="check-circle-2"></i> 1 Reserva prioritaria diaria</li>
+                        <li><i data-lucide="check-circle-2"></i> Evaluación mensual con Coach</li>
+                        <li><i data-lucide="check-circle-2"></i> Beneficios tecnológicos exclusivos</li>
+                    </ul>
+                    <a href="./pages/login.html" class="btn-plan">Elegir Plan</a>
+                </article>
+
+                <!-- Plan Familiar -->
+                <article class="plan-card">
+                    <div class="plan-header">
+                        <h3>Plan Familiar</h3>
+                        <p class="plan-desc">Entrena en grupo y obtén mejores beneficios.</p>
+                        <div class="plan-price">
+                            <span class="monto">$50.000</span>
+                            <span class="periodo">/ mes</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check-circle-2"></i> Cobertura para 3 familiares</li>
+                        <li><i data-lucide="check-circle-2"></i> Acceso ilimitado a instalaciones</li>
+                        <li><i data-lucide="check-circle-2"></i> Dashboards independientes</li>
+                        <li><i data-lucide="check-circle-2"></i> 10% Descuento en SportClub Cafe</li>
+                        <li><i data-lucide="check-circle-2"></i> Estacionamiento gratuito preferente</li>
+                    </ul>
+                    <a href="./pages/login.html" class="btn-plan">Elegir Plan</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN SOBRE EL CLUB
+             ======================================== -->
+        <section id="sobre-el-club" class="container">
+            <div class="section-title-wrapper">
+                <span class="section-subtitle">Nuestra Identidad</span>
+                <h2 class="section-title">Sobre SportClub</h2>
+            </div>
+
+            <div class="about-section">
+                <div class="about-grid">
+                    <div class="about-info">
+                        <h3>Quiénes Somos</h3>
+                        <p>
+                            En SportClub entendemos que el fitness no es solo esfuerzo físico, sino una integración inteligente de hábitos y tecnología. Combinamos modernas instalaciones físicas con un ecosistema digital que permite a cada usuario, entrenador y administrador coordinar metas de forma óptima y eficiente.
+                        </p>
+                        
+                        <div class="about-values">
+                            <!-- Misión -->
+                            <div class="value-card">
+                                <h4><i data-lucide="target"></i> Misión</h4>
+                                <p>Promover el bienestar físico y mental mediante entrenamientos deportivos y tecnología aplicada al seguimiento de usuarios.</p>
+                            </div>
+                            
+                            <!-- Visión -->
+                            <div class="value-card">
+                                <h4><i data-lucide="eye"></i> Visión</h4>
+                                <p>Ser el club deportivo referente en innovación y transformación personal a nivel regional e internacional.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-visual">
+                        <div class="visual-box">
+                            <div class="visual-circle"></div>
+                            <div class="visual-badge">
+                                <h4>100%</h4>
+                                <p>Compromiso y Salud</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN CONTACTO
+             ======================================== -->
+        <section id="contacto" class="container">
+            <div class="section-title-wrapper">
+                <span class="section-subtitle">Contacto</span>
+                <h2 class="section-title">Hablemos Hoy</h2>
+            </div>
+
+            <div class="contacto-grid">
+                <div class="contacto-info">
+                    <h3>¿Tienes dudas? Escríbenos</h3>
+                    <p>
+                        Nuestro equipo administrativo y cuerpo de entrenadores están listos para asistirte y resolver cualquier consulta técnica o de planes.
+                    </p>
+
+                    <div class="contact-channels">
+                        <div class="channel">
+                            <div class="channel-icon"><i data-lucide="mail"></i></div>
+                            <div class="channel-details">
+                                <h4>Correo Electrónico</h4>
+                                <p>contacto@sportclub.cl</p>
+                            </div>
+                        </div>
+                        <div class="channel">
+                            <div class="channel-icon"><i data-lucide="phone"></i></div>
+                            <div class="channel-details">
+                                <h4>Llámanos</h4>
+                                <p>+56 9 1234 5678</p>
+                            </div>
+                        </div>
+                        <div class="channel">
+                            <div class="channel-icon"><i data-lucide="map-pin"></i></div>
+                            <div class="channel-details">
+                                <h4>Dirección Principal</h4>
+                                <p>Av. Principal 123, Santiago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contacto-form">
+                    <form onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito! Nos contactaremos a la brevedad.');">
+                        <div class="form-group">
+                            <label for="nombre-contacto">Nombre</label>
+                            <input type="text" id="nombre-contacto" class="form-input" placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-contacto">Correo Electrónico</label>
+                            <input type="email" id="email-contacto" class="form-input" placeholder="juan@correo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje-contacto">Mensaje</label>
+                            <textarea id="mensaje-contacto" class="form-input" rows="4" placeholder="Escribe tu consulta aquí..." style="resize: none;" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
         </section>
 
     </main>
 
-    <footer>
-        <p>© 2025 SportClub | Excelencia en entrenamiento</p>
-    </footer>
-<!-- Modal de login a pantalla completa con fondo de gimnasio -->
-<div id="loginFullscreen" class="login-fullscreen">
-    <button class="close-login-btn" id="closeFullscreenBtn">&times;</button>
-    <div class="login-container">
-        <div class="login-card">
-            <h3>Bienvenido</h3>
-            <h4 class="logo"><img src="./img/logo_empresa_letra_v1.png" alt="SportClub Logo" style="height: 45px; vertical-align: middle; margin-right: 10px;"></h4>
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>SportClub</h4>
+                    <p>Potenciando tu bienestar con la mejor combinación de deporte, tecnología y guía profesional.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i data-lucide="instagram"></i></a>
+                        <a href="#" class="social-icon"><i data-lucide="facebook"></i></a>
+                        <a href="#" class="social-icon"><i data-lucide="twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-nav-col">
+                    <h5>Navegación</h5>
+                    <ul class="footer-nav-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#beneficios">Beneficios</a></li>
+                        <li><a href="#planes">Planes</a></li>
+                        <li><a href="#sobre-el-club">Sobre el Club</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-col">
+                    <h5>Enlaces de Acceso</h5>
+                    <ul class="footer-nav-links">
+                        <li><a href="./pages/login.html">Login</a></li>
+                        <li><a href="./pages/registro.html">Crear Cuenta</a></li>
+                        <li><a href="./pages/recuperar.html">Recuperar Contraseña</a></li>
+                    </ul>
+                </div>
+            </div>
 
-            <p class="sub">Accede a tu cuenta</p>
-            <form id="loginFormFull">
-                <input type="text" id="fullUsername" placeholder="Usuario o correo" required autocomplete="off">
-                <input type="password" id="fullPassword" placeholder="Contraseña" required>
-                <button type="submit">Ingresar</button>
-                <p style="font-size: 12px; margin-top: 1rem; color: #6b7280;">
-                </p>
-            </form>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SportClub. Todos los derechos reservados.</p>
+                <p>Tu mejor versión comienza hoy.</p>
+            </div>
         </div>
-    </div>
-</div>
-<script>
-    // 1. Obtener referencias a los elementos del DOM
-    const loginBtn = document.getElementById('loginBtn');
-    const loginFullscreen = document.getElementById('loginFullscreen');
-    const closeFullscreenBtn = document.getElementById('closeFullscreenBtn');
-    const loginFormFull = document.getElementById('loginFormFull');
-    const userInfoDiv = document.getElementById('userInfo');
-    const userNameSpan = document.getElementById('userNameDisplay');
-    const logoutBtn = document.getElementById('logoutBtn');
+    </footer>
 
-    // 2. Función para abrir el modal (mostrar pantalla completa)
-    loginBtn.addEventListener('click', () => {
-        loginFullscreen.style.display = 'block';
-    });
-
-    // 3. Cerrar modal con el botón X
-    closeFullscreenBtn.addEventListener('click', () => {
-        loginFullscreen.style.display = 'none';
-    });
-
-    // 4. Cerrar modal si se hace clic fuera del formulario (en el fondo oscuro)
-    loginFullscreen.addEventListener('click', (e) => {
-        if (e.target === loginFullscreen) {
-            loginFullscreen.style.display = 'none';
-        }
-    });
-
-    // 5. Manejar el envío del formulario de login
-    loginFormFull.addEventListener('submit', (e) => {
-        e.preventDefault();  // Evita que recargue la página
-        
-        const username = document.getElementById('fullUsername').value.trim();
-        const password = document.getElementById('fullPassword').value.trim();
-
-        if (username === "" || password === "") {
-            alert("Por favor completa ambos campos");
-            return;
-        }
-
-        // --- SIMULACIÓN DE AUTENTICACIÓN ---
-        // Guardamos en localStorage que el usuario ha iniciado sesión
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('userName', username);
-        
-        // Actualizar la interfaz principal (mostrar nombre y botón cerrar sesión)
-        updateUILoggedIn(username);
-        
-        // Cerrar el modal
-        loginFullscreen.style.display = 'none';
-        
-        // Limpiar el formulario para la próxima vez
-        loginFormFull.reset();
-    });
-
-    // 6. Cerrar sesión
-    logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('userName');
-        updateUILoggedOut();
-    });
-
-    // 7. Funciones para cambiar la interfaz según estado de sesión
-    function updateUILoggedIn(username) {
-        loginBtn.classList.add('hide');          // ocultar botón "Iniciar sesión"
-        userInfoDiv.classList.remove('hide');    // mostrar área de usuario
-        userNameSpan.textContent = username;     // poner el nombre
-    }
-
-    function updateUILoggedOut() {
-        loginBtn.classList.remove('hide');       // mostrar botón "Iniciar sesión"
-        userInfoDiv.classList.add('hide');       // ocultar área de usuario
-        userNameSpan.textContent = '';           // limpiar nombre
-    }
-
-    // 8. Al cargar la página, verificar si ya había una sesión activa
-    function checkSession() {
-        const isLoggedIn = localStorage.getItem('isLoggedIn');
-        const userName = localStorage.getItem('userName');
-        if (isLoggedIn === 'true' && userName) {
-            updateUILoggedIn(userName);
-        }
-    }
-    checkSession();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Inicializar Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
