@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportClub | Dashboard Coach</title>
+    
+    <!-- Hojas de Estilo Relativas -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="theme-coach">
+
+    <div class="db-wrapper">
+
+        <!-- ========================================
+             HEADER SUPERIOR OBLIGATORIO
+             ======================================== -->
+        <header class="db-header">
+            <a href="../index.html" class="db-logo">
+                <img src="../css/img/logo_empresa_letra_v1.png" alt="SportClub Logo" class="db-logo-img">
+            </a>
+
+            <!-- Acceso Perfil y Cerrar Sesión -->
+            <div class="db-user-actions">
+                <div class="profile-dropdown-wrapper">
+                    <button class="btn-profile-trigger" id="profile-dropdown-btn">
+                        <i data-lucide="user" style="width: 16px;"></i> Mi Perfil <i data-lucide="chevron-down" style="width: 14px;"></i>
+                    </button>
+                    
+                    <!-- Menú Desplegable Perfil -->
+                    <div class="profile-dropdown-menu" id="profile-dropdown-menu">
+                        <div class="dropdown-header">
+                            <p class="dropdown-name">Coach Alexis</p>
+                            <p class="dropdown-email">alexis@sportclub.cl</p>
+                        </div>
+                        <a href="#inicio" class="dropdown-item">
+                            <i data-lucide="calendar" style="width: 14px;"></i> Mis Clases
+                        </a>
+                        <a href="#alumnos-seccion" class="dropdown-item">
+                            <i data-lucide="users" style="width: 14px;"></i> Mis Alumnos
+                        </a>
+                        <a href="./login.html" class="dropdown-item logout">
+                            <i data-lucide="log-out" style="width: 14px;"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========================================
+             NAVEGACIÓN OBLIGATORIA (SIDEBAR)
+             ======================================== -->
+        <aside class="db-sidebar">
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#inicio" class="sidebar-link active">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#alumnos-seccion" class="sidebar-link">
+                        <i data-lucide="users"></i>
+                        <span>Alumnos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#clases-seccion" class="sidebar-link">
+                        <i data-lucide="award"></i>
+                        <span>Clases</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#horarios-seccion" class="sidebar-link">
+                        <i data-lucide="clock"></i>
+                        <span>Horarios</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-role-badge">
+                <h5>Coach Staff</h5>
+                <p>Nivel Senior Elite</p>
+            </div>
+        </aside>
+
+        <!-- ========================================
+             CONTENIDO PRINCIPAL DEL DASHBOARD
+             ======================================== -->
+        <main class="db-main-content" id="inicio">
+
+            <!-- Banner de Bienvenida -->
+            <section class="welcome-banner">
+                <div class="welcome-text">
+                    <h2>¡Bienvenido, Coach Alexis!</h2>
+                    <p>Gestiona el rendimiento de tus alumnos y planifica tus horarios semanales de entrenamiento.</p>
+                </div>
+                <div class="welcome-stats-pill">
+                    <i data-lucide="check-circle"></i> Clases del día listas
+                </div>
+            </section>
+
+            <!-- 1. Panel de Resumen (Tarjetas de Métricas) -->
+            <section class="db-grid-3">
+                
+                <!-- Métricas 1: Total Alumnos -->
+                <article class="metric-card">
+                    <div class="metric-info">
+                        <h4>Total Alumnos</h4>
+                        <span class="metric-value">38</span>
+                    </div>
+                    <div class="metric-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                </article>
+
+                <!-- Métricas 2: Clases Activas -->
+                <article class="metric-card">
+                    <div class="metric-info">
+                        <h4>Clases Activas</h4>
+                        <span class="metric-value">6</span>
+                    </div>
+                    <div class="metric-icon">
+                        <i data-lucide="activity"></i>
+                    </div>
+                </article>
+
+                <!-- Métricas 3: Horas Semanales -->
+                <article class="metric-card">
+                    <div class="metric-info">
+                        <h4>Horas Semanales</h4>
+                        <span class="metric-value">28h</span>
+                    </div>
+                    <div class="metric-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- Layout Grid de Gestión -->
+            <div class="db-grid-2-1">
+
+                <!-- Columna Izquierda: Tabla Alumnos y Planificador Horario -->
+                <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                    
+                    <!-- 2. Lista de Alumnos (Mínimo 5 registros) -->
+                    <section class="db-card" id="alumnos-seccion">
+                        <h3 class="db-card-title">
+                            <i data-lucide="user-check"></i> Alumnos Registrados
+                        </h3>
+                        
+                        <div class="table-responsive">
+                            <table class="db-table">
+                                <thead>
+                                    <tr>
+                                        <th>Alumno</th>
+                                        <th>Correo</th>
+                                        <th>Clase Asignada</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Carlos Mendoza</strong></td>
+                                        <td>carlos@correo.com</td>
+                                        <td><span class="badge role-coach">Crossfit</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sofía Castro</strong></td>
+                                        <td>sofia@correo.com</td>
+                                        <td><span class="badge role-coach">Funcional</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Diego Portales</strong></td>
+                                        <td>diego@correo.com</td>
+                                        <td><span class="badge role-coach">Funcional</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Valentina Jara</strong></td>
+                                        <td>valentina@correo.com</td>
+                                        <td><span class="badge role-coach">Yoga</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Manuel Montt</strong></td>
+                                        <td>manuel@correo.com</td>
+                                        <td><span class="badge role-coach">Crossfit</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- 4. Clases y Horarios Asignados -->
+                    <section class="db-card" id="horarios-seccion">
+                        <h3 class="db-card-title">
+                            <i data-lucide="calendar-days"></i> Horario Semanal Planificado
+                        </h3>
+                        
+                        <div class="table-responsive">
+                            <table class="db-table">
+                                <thead>
+                                    <tr>
+                                        <th>Clase</th>
+                                        <th>Día</th>
+                                        <th>Hora</th>
+                                        <th>Cantidad Alumnos</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Funcional</strong></td>
+                                        <td>Lunes</td>
+                                        <td>19:00</td>
+                                        <td>12 / 15 inscritos</td>
+                                        <td><button class="btn-class-action" onclick="alert('Cargando planilla de asistencia para Funcional - Lunes...');">Ver Lista</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Crossfit</strong></td>
+                                        <td>Miércoles</td>
+                                        <td>18:00</td>
+                                        <td>15 / 15 inscritos</td>
+                                        <td><button class="btn-class-action" onclick="alert('Cargando planilla de asistencia para Crossfit - Miércoles...');">Ver Lista</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Yoga</strong></td>
+                                        <td>Viernes</td>
+                                        <td>20:00</td>
+                                        <td>8 / 10 inscritos</td>
+                                        <td><button class="btn-class-action" onclick="alert('Cargando planilla de asistencia para Yoga - Viernes...');">Ver Lista</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Crossfit</strong></td>
+                                        <td>Jueves</td>
+                                        <td>19:00</td>
+                                        <td>14 / 15 inscritos</td>
+                                        <td><button class="btn-class-action" onclick="alert('Cargando planilla de asistencia para Crossfit - Jueves...');">Ver Lista</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Funcional</strong></td>
+                                        <td>Sábado</td>
+                                        <td>10:00</td>
+                                        <td>10 / 12 inscritos</td>
+                                        <td><button class="btn-class-action" onclick="alert('Cargando planilla de asistencia para Funcional - Sábado...');">Ver Lista</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- Columna Derecha: Clases Asignadas Resumen -->
+                <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                    
+                    <!-- 3. Clases Asignadas (Mínimo 3 clases) -->
+                    <section class="db-card" id="clases-seccion">
+                        <h3 class="db-card-title">
+                            <i data-lucide="book-open"></i> Clases Asignadas
+                        </h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                            <!-- Clase 1 -->
+                            <article class="class-mini-card">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <div class="class-mini-icon"><i data-lucide="zap"></i></div>
+                                    <div>
+                                        <h4 style="margin-bottom: 0;">Funcional</h4>
+                                        <small style="color: var(--theme-accent);">Lunes • 19:00</small>
+                                    </div>
+                                </div>
+                                <p style="margin-bottom: 0;">Coordinación funcional completa y quema calórica acelerada en circuito.</p>
+                            </article>
+
+                            <!-- Clase 2 -->
+                            <article class="class-mini-card">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <div class="class-mini-icon"><i data-lucide="activity"></i></div>
+                                    <div>
+                                        <h4 style="margin-bottom: 0;">Crossfit</h4>
+                                        <small style="color: var(--theme-accent);">Miércoles • 18:00</small>
+                                    </div>
+                                </div>
+                                <p style="margin-bottom: 0;">Bloque intensivo WOD enfocado en levantamiento de pesas y gimnasia.</p>
+                            </article>
+
+                            <!-- Clase 3 -->
+                            <article class="class-mini-card">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                    <div class="class-mini-icon"><i data-lucide="wind"></i></div>
+                                    <div>
+                                        <h4 style="margin-bottom: 0;">Yoga</h4>
+                                        <small style="color: var(--theme-accent);">Viernes • 20:00</small>
+                                    </div>
+                                </div>
+                                <p style="margin-bottom: 0;">Posturas restaurativas fluidas y relajación muscular para el fin de semana.</p>
+                            </article>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Scripts de Lógica y Lucide -->
+    <script src="../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

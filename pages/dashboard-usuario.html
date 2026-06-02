@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportClub | Mi Dashboard</title>
+    
+    <!-- Hojas de Estilo Relativas -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="theme-user">
+
+    <div class="db-wrapper">
+
+        <header class="db-header">
+            <a href="../index.html" class="db-logo">
+                <img src="../css/img/logo_empresa_letra_v1.png" alt="SportClub Logo" class="db-logo-img">
+            </a>
+
+            <!-- Acceso Perfil y Cerrar Sesión -->
+            <div class="db-user-actions">
+                <div class="profile-dropdown-wrapper">
+                    <button class="btn-profile-trigger" id="profile-dropdown-btn">
+                        <i data-lucide="user" style="width: 16px;"></i> Mi Perfil <i data-lucide="chevron-down" style="width: 14px;"></i>
+                    </button>
+                    
+                    <!-- Menú Desplegable Realizado de Forma Elegante -->
+                    <div class="profile-dropdown-menu" id="profile-dropdown-menu">
+                        <div class="dropdown-header">
+                            <p class="dropdown-name">Javier Silva</p>
+                            <p class="dropdown-email">javier@correo.com</p>
+                        </div>
+                        <a href="#perfil-seccion" class="dropdown-item">
+                            <i data-lucide="settings" style="width: 14px;"></i> Editar Perfil
+                        </a>
+                        <a href="#reservas-seccion" class="dropdown-item">
+                            <i data-lucide="calendar" style="width: 14px;"></i> Mis Reservas
+                        </a>
+                        <a href="./login.html" class="dropdown-item logout">
+                            <i data-lucide="log-out" style="width: 14px;"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========================================
+             NAVEGACIÓN OBLIGATORIA (SIDEBAR)
+             ======================================== -->
+        <aside class="db-sidebar">
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#inicio" class="sidebar-link active">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#reservas-seccion" class="sidebar-link">
+                        <i data-lucide="calendar-check"></i>
+                        <span>Reservas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#clases-seccion" class="sidebar-link">
+                        <i data-lucide="activity"></i>
+                        <span>Clases</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#perfil-seccion" class="sidebar-link">
+                        <i data-lucide="user-cog"></i>
+                        <span>Mi Perfil</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-role-badge">
+                <h5>Usuario Club</h5>
+                <p>Plan Premium Activo</p>
+            </div>
+        </aside>
+
+        <!-- ========================================
+             CONTENIDO PRINCIPAL DEL DASHBOARD
+             ======================================== -->
+        <main class="db-main-content" id="inicio">
+
+            <!-- Banner de Bienvenida -->
+            <section class="welcome-banner">
+                <div class="welcome-text">
+                    <h2>¡Bienvenido, Javier!</h2>
+                    <p>Continúa entrenando para alcanzar tus metas. Tu mejor versión comienza hoy.</p>
+                </div>
+                <div class="welcome-stats-pill">
+                    <i data-lucide="award"></i> 850 Puntos Fit
+                </div>
+            </section>
+
+            <!-- Layout Grid Base -->
+            <div class="db-grid-2-1">
+
+                <!-- Columna Izquierda: Reservas y Clases -->
+                <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                    
+                    <!-- Módulo de Reservas de Usuario (Mínimo 5 registros) -->
+                    <section class="db-card" id="reservas-seccion">
+                        <h3 class="db-card-title">
+                            <i data-lucide="calendar"></i> Reservas del Usuario
+                        </h3>
+                        
+                        <div class="table-responsive">
+                            <table class="db-table">
+                                <thead>
+                                    <tr>
+                                        <th>Clase</th>
+                                        <th>Día</th>
+                                        <th>Hora</th>
+                                        <th>Coach Asignado</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Funcional</strong></td>
+                                        <td>Lunes</td>
+                                        <td>09:00</td>
+                                        <td>Coach Alexis</td>
+                                        <td><span class="badge success"><i data-lucide="circle-dot" style="width: 8px;"></i> Confirmado</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Crossfit</strong></td>
+                                        <td>Martes</td>
+                                        <td>19:30</td>
+                                        <td>Coach Valeria</td>
+                                        <td><span class="badge success"><i data-lucide="circle-dot" style="width: 8px;"></i> Confirmado</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Yoga</strong></td>
+                                        <td>Miércoles</td>
+                                        <td>08:30</td>
+                                        <td>Coach Sofía</td>
+                                        <td><span class="badge success"><i data-lucide="circle-dot" style="width: 8px;"></i> Confirmado</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Musculación</strong></td>
+                                        <td>Jueves</td>
+                                        <td>10:00</td>
+                                        <td>Coach Javier</td>
+                                        <td><span class="badge success"><i data-lucide="circle-dot" style="width: 8px;"></i> Confirmado</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Funcional</strong></td>
+                                        <td>Viernes</td>
+                                        <td>18:00</td>
+                                        <td>Coach Alexis</td>
+                                        <td><span class="badge success"><i data-lucide="circle-dot" style="width: 8px;"></i> Confirmado</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Módulo de Clases Disponibles (Mínimo 3 tarjetas) -->
+                    <section class="db-card" id="clases-seccion">
+                        <h3 class="db-card-title">
+                            <i data-lucide="flame"></i> Clases Disponibles
+                        </h3>
+                        
+                        <div class="classes-deck">
+                            <!-- Clase 1: Crossfit -->
+                            <article class="class-mini-card">
+                                <div class="class-mini-header">
+                                    <div class="class-mini-icon"><i data-lucide="bar-chart-2"></i></div>
+                                    <span style="font-size: 0.75rem; color: var(--theme-accent); font-weight: 700; text-transform: uppercase;">Avanzado</span>
+                                </div>
+                                <h4>Crossfit</h4>
+                                <p>Fuerza explosiva, levantamiento olímpico y alta intensidad metabólica combinados en WODs dinámicos.</p>
+                                <button class="btn-class-action" onclick="event.stopPropagation(); alert('¡Clase Reservada con éxito para el próximo bloque disponible!');">Reservar Clase</button>
+                            </article>
+
+                            <!-- Clase 2: Funcional -->
+                            <article class="class-mini-card">
+                                <div class="class-mini-header">
+                                    <div class="class-mini-icon"><i data-lucide="zap"></i></div>
+                                    <span style="font-size: 0.75rem; color: var(--theme-accent); font-weight: 700; text-transform: uppercase;">Medio</span>
+                                </div>
+                                <h4>Funcional</h4>
+                                <p>Entrenamiento focalizado en patrones de movimientos biomecánicos para tonificar y proteger articulaciones.</p>
+                                <button class="btn-class-action" onclick="event.stopPropagation(); alert('¡Clase Reservada con éxito para el próximo bloque disponible!');">Reservar Clase</button>
+                            </article>
+
+                            <!-- Clase 3: Yoga -->
+                            <article class="class-mini-card">
+                                <div class="class-mini-header">
+                                    <div class="class-mini-icon"><i data-lucide="wind"></i></div>
+                                    <span style="font-size: 0.75rem; color: var(--theme-accent); font-weight: 700; text-transform: uppercase;">Todos</span>
+                                </div>
+                                <h4>Yoga & Estiramiento</h4>
+                                <p>Flexibilidad postural, técnicas respiratorias profundas y mindfulness integrados para bienestar mental y físico.</p>
+                                <button class="btn-class-action" onclick="event.stopPropagation(); alert('¡Clase Reservada con éxito para el próximo bloque disponible!');">Reservar Clase</button>
+                            </article>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- Columna Derecha: Perfil Rápido -->
+                <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                    
+                    <!-- Módulo Perfil Rápido -->
+                    <section class="db-card profile-quick-panel" id="perfil-seccion">
+                        <h3 class="db-card-title" style="justify-content: center; margin-bottom: 2rem;">
+                            <i data-lucide="info"></i> Perfil Rápido
+                        </h3>
+                        
+                        <div class="profile-avatar-wrapper">
+                            <div class="profile-avatar">JS</div>
+                            <div class="profile-avatar-active"></div>
+                        </div>
+
+                        <h3>Javier Silva</h3>
+                        <p class="profile-role">Miembro Premium</p>
+
+                        <div class="profile-meta-list">
+                            <div class="profile-meta-item">
+                                <span class="meta-label">Correo:</span>
+                                <span class="meta-value">javier@correo.com</span>
+                            </div>
+                            <div class="profile-meta-item">
+                                <span class="meta-label">Edad:</span>
+                                <span class="meta-value">Quien sabe?!!</span>
+                            </div>
+                            <div class="profile-meta-item">
+                                <span class="meta-label">Deporte Favorito:</span>
+                                <span class="meta-value">Crossfit</span>
+                            </div>
+                            <div class="profile-meta-item">
+                                <span class="meta-label">Miembro Desde:</span>
+                                <span class="meta-value">Abr 2026</span>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Scripts de Lógica y Lucide -->
+    <script src="../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
