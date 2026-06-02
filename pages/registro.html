@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportClub | Registro de Usuario</title>
+    
+    <!-- Hoja de Estilo Principal (Relativa) -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="auth-page-wrapper">
+
+    <!-- ========================================
+         TARJETA DE REGISTRO
+         ======================================== -->
+    <article class="auth-card">
+        
+        <header class="auth-header">
+            <a href="../index.html" class="logo-container" style="justify-content: center; margin-bottom: 1.5rem;">
+                <img src="../css/img/logo_empresa_letra_v1.png" alt="SportClub Logo" class="logo-img">
+            </a>
+            <p class="auth-subtitle">Crea tu cuenta digital hoy mismo</p>
+        </header>
+
+        <!-- Contenedor Visual de Retroalimentación (Éxito / Error) -->
+        <div id="feedback-register" class="feedback-box">
+            <!-- Rellenado dinámicamente mediante JS -->
+        </div>
+
+        <!-- Formulario de Registro -->
+        <form id="form-registro" novalidate>
+            
+            <!-- Campo Nombre -->
+            <div class="form-group">
+                <label for="name-register">Nombre Completo</label>
+                <div style="position: relative; display: flex; align-items: center;">
+                    <i data-lucide="user" style="position: absolute; left: 15px; color: var(--text-muted); width: 18px;"></i>
+                    <input type="text" id="name-register" class="form-input" placeholder="Ej. Javier Silva" style="padding-left: 45px;" required>
+                </div>
+            </div>
+
+            <!-- Campo Correo -->
+            <div class="form-group">
+                <label for="email-register">Correo Electrónico</label>
+                <div style="position: relative; display: flex; align-items: center;">
+                    <i data-lucide="mail" style="position: absolute; left: 15px; color: var(--text-muted); width: 18px;"></i>
+                    <input type="email" id="email-register" class="form-input" placeholder="javier@correo.com" style="padding-left: 45px;" required>
+                </div>
+            </div>
+
+            <!-- Campo Contraseña -->
+            <div class="form-group">
+                <label for="password-register">Contraseña</label>
+                <div style="position: relative; display: flex; align-items: center;">
+                    <i data-lucide="lock" style="position: absolute; left: 15px; color: var(--text-muted); width: 18px;"></i>
+                    <input type="password" id="password-register" class="form-input" placeholder="Mínimo 6 caracteres" style="padding-left: 45px;" required>
+                </div>
+            </div>
+
+            <!-- Campo Confirmar Contraseña -->
+            <div class="form-group">
+                <label for="confirm-password-register">Confirmar Contraseña</label>
+                <div style="position: relative; display: flex; align-items: center;">
+                    <i data-lucide="shield-check" style="position: absolute; left: 15px; color: var(--text-muted); width: 18px;"></i>
+                    <input type="password" id="confirm-password-register" class="form-input" placeholder="Repite tu contraseña" style="padding-left: 45px;" required>
+                </div>
+            </div>
+
+            <!-- Campo Opcional (Información Adicional) -->
+            <div class="form-group">
+                <label for="sport-register">Deporte Favorito <span style="font-size: 0.75rem; color: var(--primary-dorado); font-weight: normal;">(Opcional)</span></label>
+                <div style="position: relative; display: flex; align-items: center;">
+                    <i data-lucide="activity" style="position: absolute; left: 15px; color: var(--text-muted); width: 18px;"></i>
+                    <select id="sport-register" class="form-input" style="padding-left: 45px; background: rgba(9, 5, 15, 0.6); width: 100%;">
+                        <option value="" disabled selected>Selecciona tu disciplina favorita</option>
+                        <option value="Crossfit">Crossfit</option>
+                        <option value="Funcional">Funcional</option>
+                        <option value="Yoga">Yoga</option>
+                        <option value="Musculación">Musculación / Fitness</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Botón de Registro -->
+            <button type="submit" class="btn-auth">
+                Registrarse <i data-lucide="user-plus"></i>
+            </button>
+
+            <!-- Volver al Login -->
+            <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">
+                <a href="./login.html" class="auth-link">¿Ya tienes cuenta? Iniciar Sesión</a>
+            </div>
+
+        </form>
+
+    </article>
+
+    <!-- Scripts de Lógica y Lucide -->
+    <script src="../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
