@@ -2,7 +2,6 @@
  * SPORTCLUB - LÓGICA DE INTERACCIÓN DEL FRONTEND
  * main.js
  */
-
 document.addEventListener("DOMContentLoaded", () => {
     
     // ========================================
@@ -45,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             feedbackRegister.innerHTML = "";
 
             // 1. Validar campos vacíos
-            if (!name || !email || !password || !confirmPassword) {
+            if ( !name || !email || !password || !confirmPassword) {
                 showFeedback(feedbackRegister, "error", "Por favor, completa todos los campos obligatorios.");
                 return;
             }
