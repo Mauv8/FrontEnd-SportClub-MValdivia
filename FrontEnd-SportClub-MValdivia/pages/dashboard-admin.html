@@ -88,12 +88,7 @@
                         <span>Clases</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#perfil-detallado-seccion" class="sidebar-link">
-                        <i data-lucide="user-cog"></i>
-                        <span>Mi Perfil</span>
-                    </a>
-                </li>
+
             </ul>
 
             <div class="sidebar-role-badge">
@@ -285,6 +280,10 @@
                                 <span class="meta-value">May 2026</span>
                             </div>
                         </div>
+
+                        <button type="button" id="btn-edit-my-profile-trigger" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1.5rem; background: linear-gradient(135deg, #0072FF 0%, #00C6FF 100%); color: #FFFFFF; font-weight: bold; border: none; box-shadow: 0 4px 15px rgba(0, 114, 255, 0.25);">
+                            <i data-lucide="edit-3"></i> Editar Perfil
+                        </button>
                     </section>
 
                     <!-- 4. Configuración Rápida (Panel con Botones) -->
@@ -315,159 +314,6 @@
             </div>
             </div> <!-- Cierre de inicio-seccion -->
 
-            <!-- ========================================
-                 SECCIÓN PERFIL DETALLADO (EVALUACIÓN 2)
-                 ======================================== -->
-            <section id="perfil-detallado-seccion" class="db-section hidden">
-                <div class="db-grid-2-1" style="margin-bottom: 0;">
-                    
-                    <!-- Columna Izquierda: Información de Perfil (Vista / Edición) -->
-                    <div style="display: flex; flex-direction: column; gap: 2rem;">
-                        
-                        <!-- Tarjeta Visual Principal (Vista de Perfil) -->
-                        <article class="db-card" id="profile-view-card">
-                            <h3 class="db-card-title">
-                                <i data-lucide="user"></i> Información del Usuario
-                            </h3>
-                            
-                            <div class="profile-avatar-container" style="text-align: center; margin-bottom: 1.5rem; position: relative;">
-                                <img id="main-profile-avatar-img" src="" alt="Foto de Perfil" class="hidden" style="width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--primary-dorado); object-fit: cover; margin: 0 auto; display: block; box-shadow: 0 0 15px rgba(242,183,5,0.2);">
-                                <div id="main-profile-avatar-placeholder" class="profile-avatar-placeholder" style="width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--primary-dorado); background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 2.2rem; font-weight: 700; color: var(--primary-dorado); text-shadow: 0 2px 4px rgba(0,0,0,0.5); box-shadow: 0 0 15px rgba(242,183,5,0.2);">
-                                    U
-                                </div>
-                            </div>
-                            
-                            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem;">
-                                    <span style="color: var(--text-muted); font-size: 0.95rem;">Nombre Completo:</span>
-                                    <span id="main-profile-name" style="font-weight: 600; color: #FFF; font-size: 1.05rem;">-</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem;">
-                                    <span style="color: var(--text-muted); font-size: 0.95rem;">Email:</span>
-                                    <span id="main-profile-email" style="font-weight: 600; color: #FFF; font-size: 1.05rem;">-</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem;">
-                                    <span style="color: var(--text-muted); font-size: 0.95rem;">Rol:</span>
-                                    <span id="main-profile-role-badge" class="badge">-</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem;">
-                                    <span style="color: var(--text-muted); font-size: 0.95rem;">Fecha de Nacimiento:</span>
-                                    <span id="main-profile-birthdate" style="font-weight: 600; color: #FFF; font-size: 1.05rem;">-</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem;">
-                                    <span style="color: var(--text-muted); font-size: 0.95rem;">Deporte Favorito:</span>
-                                    <span id="main-profile-sport" style="font-weight: 600; color: #FFF; font-size: 1.05rem;">-</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.5rem;">
-                                    <span style="color: var(--text-muted); font-size: 0.95rem;">Datos Adicionales:</span>
-                                    <span id="main-profile-metadata-other" style="font-weight: 600; color: #FFF; font-size: 1.05rem;">-</span>
-                                </div>
-                            </div>
-                            
-                            <button type="button" id="btn-toggle-edit-profile" class="btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #0072FF 0%, #00C6FF 100%); color: #FFFFFF; font-weight: bold; border: none; box-shadow: 0 4px 15px rgba(0, 114, 255, 0.25);">
-                                <i data-lucide="edit-3"></i> Editar Perfil
-                            </button>
-                        </article>
-
-                        <!-- Tarjeta Formulario de Edición de Perfil (Oculta por defecto) -->
-                        <article class="db-card hidden" id="profile-edit-card">
-                            <h3 class="db-card-title">
-                                <i data-lucide="user-cog"></i> Editar Información Personal
-                            </h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
-                                Actualiza tus datos de contacto y de perfil.
-                            </p>
-                            
-                            <form id="form-edit-profile" novalidate>
-                                <div class="form-group">
-                                    <label for="profile-name">Nombre Completo</label>
-                                    <input type="text" id="profile-name" class="form-input" required>
-                                    <span class="error-message" id="error-profile-name"></span>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="profile-email">Correo Electrónico</label>
-                                    <input type="email" id="profile-email" class="form-input" required>
-                                    <span class="error-message" id="error-profile-email"></span>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="profile-role">Rol (Solo Lectura)</label>
-                                    <input type="text" id="profile-role-display" class="form-input" disabled style="background: rgba(255,255,255,0.02); color: var(--text-muted); border-color: rgba(255,255,255,0.05);">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="profile-birthdate">Fecha de Nacimiento</label>
-                                    <input type="date" id="profile-birthdate" class="form-input">
-                                    <span class="error-message" id="error-profile-birthdate"></span>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="profile-sport">Deporte Favorito</label>
-                                    <select id="profile-sport" class="form-input" style="background: rgba(9, 5, 15, 0.6); width: 100%;">
-                                        <option value="" disabled selected>Selecciona tu disciplina favorita</option>
-                                        <option value="Crossfit">Crossfit</option>
-                                        <option value="Funcional">Funcional</option>
-                                        <option value="Yoga">Yoga</option>
-                                        <option value="Musculación">Musculación / Fitness</option>
-                                    </select>
-                                    <span class="error-message" id="error-profile-sport"></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="profile-metadata-other">Datos Adicionales (Otros)</label>
-                                    <input type="text" id="profile-metadata-other" class="form-input" placeholder="Ej. Lesiones, metas, notas adicionales">
-                                    <span class="error-message" id="error-profile-metadata-other"></span>
-                                </div>
-
-                                <div id="feedback-profile" class="feedback-box" style="display: none; margin-bottom: 1.5rem; padding: 1rem; border-radius: var(--border-radius-sm);"></div>
-                                
-                                <div style="display: flex; gap: 1rem;">
-                                    <button type="button" id="btn-cancel-edit-profile" class="btn-secondary" style="flex: 1; justify-content: center; padding: 0.75rem 1.5rem; font-size: 0.95rem;">Cancelar</button>
-                                    <button type="submit" class="btn-primary" style="flex: 1; justify-content: center; padding: 0.75rem 1.5rem; font-size: 0.95rem; background: linear-gradient(135deg, var(--primary-dorado) 0%, #FFF 250%); color: var(--dark-bg);">Guardar Cambios</button>
-                                </div>
-                            </form>
-                        </article>
-                    </div>
-
-                    <!-- Columna Derecha: Cambio de Contraseña -->
-                    <div style="display: flex; flex-direction: column; gap: 2rem;">
-                        <article class="db-card">
-                            <h3 class="db-card-title">
-                                <i data-lucide="lock"></i> Cambiar contraseña
-                            </h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
-                                Para cambiar tu contraseña, completa la información de seguridad.
-                            </p>
-                            
-                            <form id="form-change-password" novalidate>
-                                <div class="form-group">
-                                    <label for="password-current">Contraseña Actual</label>
-                                    <input type="password" id="password-current" class="form-input" placeholder="••••••••" required>
-                                    <span class="error-message" id="error-password-current"></span>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="password-new">Nueva Contraseña</label>
-                                    <input type="password" id="password-new" class="form-input" placeholder="Mínimo 8 caracteres" required>
-                                    <span class="error-message" id="error-password-new"></span>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="password-confirm">Confirmar Nueva Contraseña</label>
-                                    <input type="password" id="password-confirm" class="form-input" placeholder="Repite la nueva contraseña" required>
-                                    <span class="error-message" id="error-password-confirm"></span>
-                                </div>
-
-                                <div id="feedback-password" class="feedback-box" style="display: none; margin-bottom: 1.5rem; padding: 1rem; border-radius: var(--border-radius-sm);"></div>
-                                
-                                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: #FFFFFF; font-weight: bold; border: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);">Guardar cambios</button>
-                            </form>
-                        </article>
-                    </div>
-                    
-                </div>
-            </section>
         </main>
 
     </div>
@@ -530,6 +376,105 @@
                     Guardar Usuario
                 </button>
             </form>
+            
+        </div>
+    </div>
+
+    <!-- ========================================
+         MODAL DE PERFIL UNIFICADO
+         ======================================== -->
+    <div id="my-profile-modal" class="modal-wrapper" style="display: none;">
+        <div class="modal-content profile-modal-content" style="max-width: 850px; width: 95%;">
+            
+            <header class="modal-header">
+                <h3><i data-lucide="user-cog" style="color: var(--primary-dorado); vertical-align: middle; margin-right: 0.5rem; width: 22px; height: 22px;"></i>Mi Perfil</h3>
+                <button type="button" id="close-my-profile-modal-btn" class="close-btn">&times;</button>
+            </header>
+            
+            <div class="modal-grid-2">
+                <!-- Columna Izquierda: Información de Perfil -->
+                <div>
+                    <h4 style="color: var(--primary-dorado); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+                        <i data-lucide="edit-3" style="width: 18px;"></i> Editar Información Personal
+                    </h4>
+                    <form id="form-edit-profile" novalidate>
+                        <div class="form-group">
+                            <label for="profile-name">Nombre Completo</label>
+                            <input type="text" id="profile-name" class="form-input" required>
+                            <span class="error-message" id="error-profile-name"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profile-email">Correo Electrónico</label>
+                            <input type="email" id="profile-email" class="form-input" required>
+                            <span class="error-message" id="error-profile-email"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profile-role-display">Rol (Solo Lectura)</label>
+                            <input type="text" id="profile-role-display" class="form-input" disabled style="background: rgba(255,255,255,0.02); color: var(--text-muted); border-color: rgba(255,255,255,0.05);">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profile-birthdate">Fecha de Nacimiento</label>
+                            <input type="date" id="profile-birthdate" class="form-input">
+                            <span class="error-message" id="error-profile-birthdate"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="profile-sport">Deporte Favorito</label>
+                            <select id="profile-sport" class="form-input" style="background: rgba(9, 5, 15, 0.6); width: 100%;">
+                                <option value="" disabled selected>Selecciona tu disciplina favorita</option>
+                                <option value="Crossfit">Crossfit</option>
+                                <option value="Funcional">Funcional</option>
+                                <option value="Yoga">Yoga</option>
+                                <option value="Musculación">Musculación / Fitness</option>
+                            </select>
+                            <span class="error-message" id="error-profile-sport"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile-metadata-other">Datos Adicionales (Otros)</label>
+                            <input type="text" id="profile-metadata-other" class="form-input" placeholder="Ej. Lesiones, metas, notas adicionales">
+                            <span class="error-message" id="error-profile-metadata-other"></span>
+                        </div>
+
+                        <div id="feedback-profile" class="feedback-box" style="display: none; margin-bottom: 1.5rem; padding: 1rem; border-radius: var(--border-radius-sm);"></div>
+                        
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.75rem 1.5rem; font-size: 0.95rem; background: linear-gradient(135deg, var(--primary-dorado) 0%, #FFF 250%); color: var(--dark-bg); font-weight: bold; border: none; box-shadow: 0 4px 15px rgba(242, 183, 5, 0.25);">Guardar Cambios</button>
+                    </form>
+                </div>
+                
+                <!-- Columna Derecha: Cambio de Contraseña -->
+                <div>
+                    <h4 style="color: var(--primary-dorado); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+                        <i data-lucide="lock" style="width: 18px;"></i> Cambiar Contraseña
+                    </h4>
+                    <form id="form-change-password" novalidate>
+                        <div class="form-group">
+                            <label for="password-current">Contraseña Actual</label>
+                            <input type="password" id="password-current" class="form-input" placeholder="••••••••" required>
+                            <span class="error-message" id="error-password-current"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password-new">Nueva Contraseña</label>
+                            <input type="password" id="password-new" class="form-input" placeholder="Mínimo 8 caracteres" required>
+                            <span class="error-message" id="error-password-new"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password-confirm">Confirmar Nueva Contraseña</label>
+                            <input type="password" id="password-confirm" class="form-input" placeholder="Repite la nueva contraseña" required>
+                            <span class="error-message" id="error-password-confirm"></span>
+                        </div>
+
+                        <div id="feedback-password" class="feedback-box" style="display: none; margin-bottom: 1.5rem; padding: 1rem; border-radius: var(--border-radius-sm);"></div>
+                        
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: #FFFFFF; font-weight: bold; border: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25); padding: 0.75rem 1.5rem; font-size: 0.95rem;">Actualizar Contraseña</button>
+                    </form>
+                </div>
+            </div>
             
         </div>
     </div>

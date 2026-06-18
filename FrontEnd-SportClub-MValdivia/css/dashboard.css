@@ -931,3 +931,25 @@
     box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
 }
 
+/* ========================================
+   MODAL DE PERFIL UNIFICADO (DOS COLUMNAS)
+   ======================================== */
+.modal-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .modal-content.profile-modal-content {
+        max-width: 500px !important;
+    }
+    .modal-grid-2 {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+}
+

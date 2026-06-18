@@ -250,25 +250,105 @@ document.addEventListener("DOMContentLoaded", () => {
     const formEditProfile = document.getElementById("form-edit-profile");
     const feedbackProfile = document.getElementById("feedback-profile");
     
-    // Toggle de Vista / Edición de Perfil
-    const btnToggleEdit = document.getElementById("btn-toggle-edit-profile");
-    const btnCancelEdit = document.getElementById("btn-cancel-edit-profile");
-    const profileViewCard = document.getElementById("profile-view-card");
-    const profileEditCard = document.getElementById("profile-edit-card");
+    // Lógica del modal de perfil unificado
+    const myProfileModal = document.getElementById("my-profile-modal");
+    const btnEditMyProfileTrigger = document.getElementById("btn-edit-my-profile-trigger");
+    const dropdownLinkProfile = document.getElementById("dropdown-link-profile");
+    const closeMyProfileModalBtn = document.getElementById("close-my-profile-modal-btn");
 
-    if (btnToggleEdit && profileViewCard && profileEditCard) {
-        btnToggleEdit.addEventListener("click", () => {
-            profileViewCard.classList.add("hidden");
-            profileEditCard.classList.remove("hidden");
+    function openMyProfileModal() {
+        if (myProfileModal) {
+            // Cargar los datos actuales en los campos del formulario antes de abrir
+            const userJson = localStorage.getItem("user");
+            if (userJson) {
+                try {
+                    const user = JSON.parse(userJson);
+                    const nameInput = document.getElementById("profile-name");
+                    const emailInput = document.getElementById("profile-email");
+                    const roleDisplay = document.getElementById("profile-role-display");
+                    const birthdateInput = document.getElementById("profile-birthdate");
+                    const sportSelect = document.getElementById("profile-sport");
+                    const metadataOtherInput = document.getElementById("profile-metadata-other");
+
+                    if (nameInput) nameInput.value = user.full_name || user.name || "";
+                    if (emailInput) emailInput.value = user.email || "";
+                    if (roleDisplay) {
+                        const rawRole = user.role || "";
+                        if (rawRole === "admin") roleDisplay.value = "Administrador";
+                        else if (rawRole === "coach") roleDisplay.value = "Coach";
+                        else roleDisplay.value = "Usuario";
+                    }
+                    if (birthdateInput) {
+                        const rawDate = user.birth_date || user.fecha_nacimiento || "";
+                        if (rawDate) {
+                            if (rawDate.includes("/")) {
+                                const parts = rawDate.split("/");
+                                if (parts.length === 3) {
+                                    birthdateInput.value = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+                                }
+                            } else {
+                                birthdateInput.value = rawDate.split("T")[0];
+                            }
+                        } else {
+                            birthdateInput.value = "";
+                        }
+                    }
+                    if (sportSelect) {
+                        const sportVal = user.otros?.deporte || (user.metadata?.sports && user.metadata.sports[0]?.name) || "";
+                        sportSelect.value = sportVal;
+                    }
+                    if (metadataOtherInput) {
+                        const otherVal = user.otros?.info_adicional || user.metadata?.info_adicional || "";
+                        metadataOtherInput.value = otherVal;
+                    }
+                } catch (e) {
+                    console.error("Error formatting user data for profile modal", e);
+                }
+            }
+            
+            myProfileModal.style.display = "flex";
+        }
+    }
+
+    function closeMyProfileModal() {
+        if (myProfileModal) {
+            myProfileModal.style.display = "none";
+            // Limpiar errores y feedbacks
+            if (formEditProfile) clearValidationErrors(formEditProfile);
+            if (formChangePassword) clearValidationErrors(formChangePassword);
+            if (feedbackProfile) feedbackProfile.style.display = "none";
+            if (feedbackPassword) feedbackPassword.style.display = "none";
+        }
+    }
+
+    if (btnEditMyProfileTrigger) {
+        btnEditMyProfileTrigger.addEventListener("click", (e) => {
+            e.preventDefault();
+            openMyProfileModal();
         });
     }
 
-    if (btnCancelEdit && profileViewCard && profileEditCard) {
-        btnCancelEdit.addEventListener("click", () => {
-            clearValidationErrors(formEditProfile);
-            if (feedbackProfile) feedbackProfile.style.display = "none";
-            profileEditCard.classList.add("hidden");
-            profileViewCard.classList.remove("hidden");
+    if (dropdownLinkProfile) {
+        dropdownLinkProfile.addEventListener("click", (e) => {
+            e.preventDefault();
+            // Cerrar el dropdown del header
+            const profileMenu = document.getElementById("profile-dropdown-menu");
+            if (profileMenu) profileMenu.classList.remove("active");
+            openMyProfileModal();
+        });
+    }
+
+    if (closeMyProfileModalBtn) {
+        closeMyProfileModalBtn.addEventListener("click", () => {
+            closeMyProfileModal();
+        });
+    }
+
+    if (myProfileModal) {
+        myProfileModal.addEventListener("click", (e) => {
+            if (e.target === myProfileModal) {
+                closeMyProfileModal();
+            }
         });
     }
 
@@ -336,11 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     
                     setTimeout(() => {
                         feedbackProfile.style.display = "none";
-                        // Regresar al modo vista
-                        if (profileViewCard && profileEditCard) {
-                            profileViewCard.classList.remove("hidden");
-                            profileEditCard.classList.add("hidden");
-                        }
+                        closeMyProfileModal();
                     }, 2000);
                 } else {
                     const err = await response.json().catch(() => ({}));
@@ -404,11 +480,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (response && response.ok) {
-                    showFeedback(feedbackPassword, "success", "Perfil actualizado correctamente.");
+                    showFeedback(feedbackPassword, "success", "Contraseña cambiada correctamente.");
                     formChangePassword.reset();
                     setTimeout(() => {
                         feedbackPassword.style.display = "none";
-                    }, 3000);
+                        closeMyProfileModal();
+                    }, 2000);
                 } else {
                     const err = await response.json().catch(() => ({}));
                     showFeedback(feedbackPassword, "error", err.message || "Error al cambiar contraseña.");
@@ -729,29 +806,7 @@ function initDashboardTabs() {
         });
     });
 
-    const dropdownLinkProfile = document.getElementById("dropdown-link-profile");
-    if (dropdownLinkProfile) {
-        dropdownLinkProfile.addEventListener("click", (e) => {
-            e.preventDefault();
-            
-            const profileMenu = document.getElementById("profile-dropdown-menu");
-            if (profileMenu) profileMenu.classList.remove("active");
 
-            const profileSidebarLink = Array.from(sidebarLinks).find(l => l.getAttribute("href") === "#perfil-detallado-seccion");
-            if (profileSidebarLink) {
-                profileSidebarLink.click();
-            } else {
-                const sections = document.querySelectorAll(".db-section");
-                sections.forEach(sec => {
-                    if (sec.id === "perfil-detallado-seccion") {
-                        sec.classList.remove("hidden");
-                    } else {
-                        sec.classList.add("hidden");
-                    }
-                });
-            }
-        });
-    }
 }
 
 // ========================================
