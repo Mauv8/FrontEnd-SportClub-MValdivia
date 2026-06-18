@@ -165,57 +165,27 @@
                     
                     <!-- 2. Tabla Usuarios (Mínimo 5 registros) -->
                     <section class="db-card" id="usuarios-seccion">
-                        <h3 class="db-card-title">
-                            <i data-lucide="users-2"></i> Gestión de Usuarios
+                        <h3 class="db-card-title" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <span><i data-lucide="users-2" style="margin-right: 0.5rem; vertical-align: middle;"></i>Gestión de Usuarios</span>
+                            <button id="btn-create-user-table-trigger" class="btn-class-action" style="padding: 0.4rem 1rem; font-size: 0.8rem;">
+                                <i data-lucide="user-plus" style="width: 14px; margin-right: 4px; vertical-align: middle;"></i> Nuevo Usuario
+                            </button>
                         </h3>
                         
                         <div class="table-responsive">
                             <table class="db-table">
                                 <thead>
                                     <tr>
-                                        <th>RUT</th>
+                                        <th>ID</th>
                                         <th>Nombre Completo</th>
+                                        <th>Email</th>
                                         <th>Rol</th>
-                                        <th>Estado</th>
                                         <th>Fecha Registro</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>12.345.678-9</td>
-                                        <td><strong>Javier Silva</strong></td>
-                                        <td><span class="badge role-user">usuario</span></td>
-                                        <td><span class="badge success">Activo</span></td>
-                                        <td>15/01/2025</td>
-                                    </tr>
-                                    <tr>
-                                        <td>18.765.432-1</td>
-                                        <td><strong>Alexis Gómez</strong></td>
-                                        <td><span class="badge role-coach">coach</span></td>
-                                        <td><span class="badge success">Activo</span></td>
-                                        <td>10/12/2025</td>
-                                    </tr>
-                                    <tr>
-                                        <td>15.246.357-0</td>
-                                        <td><strong>Sofia Toledo</strong></td>
-                                        <td><span class="badge role-user">usuario</span></td>
-                                        <td><span class="badge success">Activo</span></td>
-                                        <td>18/04/2026</td>
-                                    </tr>
-                                    <tr>
-                                        <td>9.876.543-2</td>
-                                        <td><strong>Valeria Carrasco</strong></td>
-                                        <td><span class="badge role-coach">coach</span></td>
-                                        <td><span class="badge success">Activo</span></td>
-                                        <td>01/02/2026</td>
-                                    </tr>
-                                    <tr>
-                                        <td>19.041.151-6</td>
-                                        <td><strong>Mauro Valdivia</strong></td>
-                                        <td><span class="badge role-admin">administrador</span></td>
-                                        <td><span class="badge success">Activo</span></td>
-                                        <td>18/05/2026</td>
-                                    </tr>
+                                <tbody id="admin-users-table">
+                                    <!-- Carga Dinámica desde la API -->
                                 </tbody>
                             </table>
                         </div>
@@ -325,7 +295,7 @@
                         
                         <div class="action-buttons-stack">
                             
-                            <button class="btn-admin-action" onclick="alert('Abriendo ventana modal de creación de usuario en SportClub...');">
+                            <button class="btn-admin-action" id="btn-create-user-trigger">
                                 <i data-lucide="user-plus"></i> Crear Usuario
                             </button>
                             
@@ -500,6 +470,68 @@
             </section>
         </main>
 
+    </div>
+
+    <!-- ========================================
+         MODAL DE CREACIÓN / EDICIÓN DE USUARIO (CRUD)
+         ======================================== -->
+    <div id="user-modal" class="modal-wrapper" style="display: none;">
+        <div class="modal-content">
+            
+            <header class="modal-header">
+                <h3 id="modal-title">Nuevo Usuario</h3>
+                <button type="button" id="close-modal-btn" class="close-btn">&times;</button>
+            </header>
+            
+            <form id="user-form" novalidate>
+                <input type="hidden" id="user-id">
+                
+                <div class="form-group">
+                    <label for="user-name">Nombre Completo</label>
+                    <input type="text" id="user-name" class="form-input" placeholder="Ej. Javier Silva" required>
+                    <span class="error-message" id="error-user-name"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user-email">Correo Electrónico</label>
+                    <input type="email" id="user-email" class="form-input" placeholder="javier@correo.com" required>
+                    <span class="error-message" id="error-user-email"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user-role">Rol</label>
+                    <select id="user-role" class="form-input" style="background: rgba(9, 5, 15, 0.6); width: 100%;">
+                        <option value="" disabled selected>Selecciona un rol</option>
+                        <option value="user">Usuario</option>
+                        <option value="coach">Coach</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                    <span class="error-message" id="error-user-role"></span>
+                </div>
+                
+                <!-- Campos de contraseña (solo visibles al crear) -->
+                <div id="modal-password-fields">
+                    <div class="form-group">
+                        <label for="user-password">Contraseña</label>
+                        <input type="password" id="user-password" class="form-input" placeholder="Mínimo 8 caracteres">
+                        <span class="error-message" id="error-user-password"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="user-confirm-password">Confirmar Contraseña</label>
+                        <input type="password" id="user-confirm-password" class="form-input" placeholder="Repite la contraseña">
+                        <span class="error-message" id="error-user-confirm-password"></span>
+                    </div>
+                </div>
+                
+                <div id="feedback-modal" class="feedback-box" style="display: none; margin-bottom: 1.5rem; padding: 1rem; border-radius: var(--border-radius-sm);"></div>
+                
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #0072FF 0%, #00C6FF 100%); color: #FFFFFF; font-weight: bold; border: none; box-shadow: 0 4px 15px rgba(0, 114, 255, 0.25);">
+                    Guardar Usuario
+                </button>
+            </form>
+            
+        </div>
     </div>
 
     <!-- Scripts de Lógica y Lucide -->

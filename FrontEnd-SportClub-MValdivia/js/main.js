@@ -396,7 +396,11 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 const response = await apiFetch("/auth/me/password", {
                     method: "PUT",
-                    body: JSON.stringify({ currentPassword, newPassword })
+                    body: JSON.stringify({ 
+                        current_password: currentPassword, 
+                        new_password: newPassword,
+                        confirm_password: confirmPassword
+                    })
                 });
 
                 if (response && response.ok) {
