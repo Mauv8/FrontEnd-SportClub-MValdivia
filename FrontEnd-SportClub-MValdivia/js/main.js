@@ -604,6 +604,13 @@ async function loadUserProfile() {
         if (quickBirth) quickBirth.textContent = formatDate(rawBirth);
         const quickSport = document.getElementById("quick-profile-sport");
         if (quickSport) quickSport.textContent = capitalize(rawSport) || "No seleccionado";
+        const quickRoleBadge = document.getElementById("quick-profile-role-badge");
+        if (quickRoleBadge && rawRole) {
+            const roleLower = rawRole.toLowerCase();
+            let roleDisplay = roleLower;
+            if (roleLower === "admin") roleDisplay = "administrador";
+            quickRoleBadge.innerHTML = `<span class="badge role-${roleLower}">${roleDisplay}</span>`;
+        }
 
         // 2. Elementos de la Tarjeta Visual Principal (Vista de Perfil)
         const mainProfileName = document.getElementById("main-profile-name");
