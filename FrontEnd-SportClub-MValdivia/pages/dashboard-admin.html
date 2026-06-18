@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportClub | Dashboard Administrador</title>
+    
+    <!-- Favicon Corporativo -->
+    <link rel="icon" type="image/png" href="./css/img/logo_empresa_letra.png">
+    
+    <!-- Hojas de Estilo Relativas -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="theme-admin">
+
+    <div class="db-wrapper">
+
+        <!-- ========================================
+             HEADER SUPERIOR OBLIGATORIO
+             ======================================== -->
+        <header class="db-header">
+            <a href="../index.html" class="db-logo">
+                <img src="../css/img/logo_empresa_letra_v1.png" alt="SportClub Logo" class="db-logo-img">
+            </a>
+
+            <!-- Acceso Perfil y Cerrar Sesión -->
+            <div class="db-user-actions">
+                <div class="profile-dropdown-wrapper">
+                    <button class="btn-profile-trigger" id="profile-dropdown-btn">
+                        <i data-lucide="user" style="width: 16px;"></i> Mi Perfil <i data-lucide="chevron-down" style="width: 14px;"></i>
+                    </button>
+                    
+                    <!-- Menú Desplegable Perfil -->
+                    <div class="profile-dropdown-menu" id="profile-dropdown-menu">
+                        <div class="dropdown-header">
+                            <p class="dropdown-name">Admin Mauro</p>
+                            <p class="dropdown-email">M.Valdivia@sportclub.cl</p>
+                        </div>
+                        <a href="#config-seccion" class="dropdown-item">
+                            <i data-lucide="sliders" style="width: 14px;"></i> Panel Control
+                        </a>
+                        <a href="#usuarios-seccion" class="dropdown-item">
+                            <i data-lucide="users" style="width: 14px;"></i> Usuarios
+                        </a>
+                        <a href="#perfil-detallado-seccion" class="dropdown-item" id="dropdown-link-profile">
+                            <i data-lucide="user-cog" style="width: 14px;"></i> Mi Perfil
+                        </a>
+                        <a href="./login.html" class="dropdown-item logout">
+                            <i data-lucide="log-out" style="width: 14px;"></i> Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========================================
+             NAVEGACIÓN OBLIGATORIA (SIDEBAR)
+             ======================================== -->
+        <aside class="db-sidebar">
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#inicio" class="sidebar-link active">
+                        <i data-lucide="shield-alert"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#reportes-seccion" class="sidebar-link">
+                        <i data-lucide="trending-up"></i>
+                        <span>Reportes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#config-seccion" class="sidebar-link">
+                        <i data-lucide="settings-2"></i>
+                        <span>Configuración</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#clases-seccion" class="sidebar-link">
+                        <i data-lucide="award"></i>
+                        <span>Clases</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#perfil-detallado-seccion" class="sidebar-link">
+                        <i data-lucide="user-cog"></i>
+                        <span>Mi Perfil</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-role-badge">
+                <h5>Admin Panel</h5>
+                <p>Nivel Total ROOT</p>
+            </div>
+        </aside>
+
+        <!-- ========================================
+             CONTENIDO PRINCIPAL DEL DASHBOARD
+             ======================================== -->
+        <main class="db-main-content" id="inicio">
+
+            <!-- Banner de Bienvenida -->
+            <section class="welcome-banner">
+                <div class="welcome-text">
+                    <h2>¡Bienvenido, Administrador Mauro!</h2>
+                    <p>Acceso total al control general del sistema: usuarios, clases, estadísticas y configuración global.</p>
+                </div>
+                <div class="welcome-stats-pill">
+                    <i data-lucide="shield-check"></i> Modo Seguro Activo
+                </div>
+            </section>
+
+            <!-- 1. Cards Estadísticas (Mínimo 3) -->
+            <section class="db-grid-3">
+                
+                <!-- Tarjeta 1: Total Usuarios -->
+                <article class="metric-card">
+                    <div class="metric-info">
+                        <h4>Total Usuarios</h4>
+                        <span class="metric-value">240</span>
+                    </div>
+                    <div class="metric-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 2: Total Coaches -->
+                <article class="metric-card">
+                    <div class="metric-info">
+                        <h4>Total Coaches</h4>
+                        <span class="metric-value">8</span>
+                    </div>
+                    <div class="metric-icon">
+                        <i data-lucide="award"></i>
+                    </div>
+                </article>
+
+                <!-- Tarjeta 3: Total Clases -->
+                <article class="metric-card">
+                    <div class="metric-info">
+                        <h4>Total Clases</h4>
+                        <span class="metric-value">12</span>
+                    </div>
+                    <div class="metric-icon">
+                        <i data-lucide="activity"></i>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- Layout Grid Base -->
+            <div class="db-grid-2-1">
+
+                <!-- Columna Izquierda: Tabla Usuarios y Reportes -->
+                <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                    
+                    <!-- 2. Tabla Usuarios (Mínimo 5 registros) -->
+                    <section class="db-card" id="usuarios-seccion">
+                        <h3 class="db-card-title">
+                            <i data-lucide="users-2"></i> Gestión de Usuarios
+                        </h3>
+                        
+                        <div class="table-responsive">
+                            <table class="db-table">
+                                <thead>
+                                    <tr>
+                                        <th>RUT</th>
+                                        <th>Nombre Completo</th>
+                                        <th>Rol</th>
+                                        <th>Estado</th>
+                                        <th>Fecha Registro</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>12.345.678-9</td>
+                                        <td><strong>Javier Silva</strong></td>
+                                        <td><span class="badge role-user">usuario</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                        <td>15/01/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18.765.432-1</td>
+                                        <td><strong>Alexis Gómez</strong></td>
+                                        <td><span class="badge role-coach">coach</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                        <td>10/12/2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15.246.357-0</td>
+                                        <td><strong>Sofia Toledo</strong></td>
+                                        <td><span class="badge role-user">usuario</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                        <td>18/04/2026</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9.876.543-2</td>
+                                        <td><strong>Valeria Carrasco</strong></td>
+                                        <td><span class="badge role-coach">coach</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                        <td>01/02/2026</td>
+                                    </tr>
+                                    <tr>
+                                        <td>19.041.151-6</td>
+                                        <td><strong>Mauro Valdivia</strong></td>
+                                        <td><span class="badge role-admin">administrador</span></td>
+                                        <td><span class="badge success">Activo</span></td>
+                                        <td>18/05/2026</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- 3. Panel de Reportes (Información Visual) -->
+                    <section class="db-card" id="reportes-seccion">
+                        <h3 class="db-card-title">
+                            <i data-lucide="bar-chart-3"></i> Panel de Reportes & Rendimiento
+                        </h3>
+                        
+                        <div class="db-grid-2-1" style="margin-bottom: 0; gap: 1.5rem;">
+                            <!-- Clases más solicitadas (Grafico de barras CSS) -->
+                            <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.03); border-radius: var(--border-radius-md); padding: 1.5rem;">
+                                <h4 style="font-size: 0.95rem; margin-bottom: 1.5rem; color: var(--text-white);">Clases Más Solicitadas</h4>
+                                
+                                <div class="mock-chart-wrapper">
+                                    <div class="mock-chart-column-wrapper">
+                                        <span class="mock-chart-value">85%</span>
+                                        <div class="mock-chart-bar" style="height: 85%;"></div>
+                                        <span class="mock-chart-label">Crossfit</span>
+                                    </div>
+                                    <div class="mock-chart-column-wrapper">
+                                        <span class="mock-chart-value">70%</span>
+                                        <div class="mock-chart-bar" style="height: 70%;"></div>
+                                        <span class="mock-chart-label">Funcional</span>
+                                    </div>
+                                    <div class="mock-chart-column-wrapper">
+                                        <span class="mock-chart-value">45%</span>
+                                        <div class="mock-chart-bar" style="height: 45%;"></div>
+                                        <span class="mock-chart-label">Yoga</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Usuarios Activos & Reservas del Día -->
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <!-- Bubble 1: Usuarios Activos -->
+                                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--border-radius-md); padding: 1.25rem; display: flex; align-items: center; gap: 1rem;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); display: flex; align-items: center; justify-content: center; color: var(--theme-primary);">
+                                        <i data-lucide="zap" style="width: 18px;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.1rem;">Usuarios Activos Hoy</h5>
+                                        <span style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF;">142 <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">/ 240 totales</span></span>
+                                    </div>
+                                </div>
+
+                                <!-- Bubble 2: Reservas del día -->
+                                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--border-radius-md); padding: 1.25rem; display: flex; align-items: center; gap: 1rem;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); display: flex; align-items: center; justify-content: center; color: var(--theme-primary);">
+                                        <i data-lucide="calendar" style="width: 18px;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.1rem;">Reservas del Día</h5>
+                                        <span style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF;">58 reservas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- Columna Derecha: Configuración Rápida -->
+                <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+                    
+                    <!-- 4. Configuración Rápida (Panel con Botones) -->
+                    <section class="db-card" id="config-seccion">
+                        <h3 class="db-card-title">
+                            <i data-lucide="settings"></i> Configuración Rápida
+                        </h3>
+                        
+                        <div class="action-buttons-stack">
+                            
+                            <button class="btn-admin-action" onclick="alert('Abriendo ventana modal de creación de usuario en SportClub...');">
+                                <i data-lucide="user-plus"></i> Crear Usuario
+                            </button>
+                            
+                            <button class="btn-admin-action" onclick="alert('Abriendo editor del sistema (parámetros globales)...');">
+                                <i data-lucide="sliders"></i> Editar Sistema
+                            </button>
+                            
+                            <button class="btn-admin-action" onclick="alert('Cargando configuraciones avanzadas del club...');">
+                                <i data-lucide="settings-2"></i> Configuración
+                            </button>
+                            
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Scripts de Lógica y Lucide -->
+    <script src="../js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
