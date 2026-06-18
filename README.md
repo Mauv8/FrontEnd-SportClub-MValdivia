@@ -1,7 +1,17 @@
-# 🚀 SportClub - Dashboard & API de Gestión
-
-### 🔗 Acceso Rápido a la Aplicación (GitHub Pages):
-👉 **[Ver Página Web en Vivo / Demo](https://mauv8.github.io/FrontEnd-SportClub-MValdivia/)** 👈
+<div align="center">
+  <h1>🏋️‍♂️ SportClub - Aplicación en Vivo 🏋️‍♂️</h1>
+  <p><strong>¡Haz clic en el botón de abajo para abrir la aplicación web inmediatamente!</strong></p>
+  
+  <a href="https://mauv8.github.io/FrontEnd-SportClub-MValdivia/">
+    <img src="https://img.shields.io/badge/ABRIR%20APLICACI%C3%93N%20WEB-CLICK%20AQU%C3%8D-0072FF?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Abrir Aplicación Web" height="50" style="margin: 10px 0;">
+  </a>
+  
+  <br>
+  
+  <a href="https://mauv8.github.io/FrontEnd-SportClub-MValdivia/" style="font-size: 1.5rem; font-weight: bold; color: #0072FF; text-decoration: underline;">
+    👉 https://mauv8.github.io/FrontEnd-SportClub-MValdivia/ 👈
+  </a>
+</div>
 
 ---
 
